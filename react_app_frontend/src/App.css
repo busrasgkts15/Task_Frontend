@@ -1,0 +1,88 @@
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  color: #333;
+  /* varsayılan koyu gri yazı */
+  letter-spacing: 0.5px;
+  text-transform: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #7b7b7b;
+  /* Açık gri */
+  transition: color 0.3s ease;
+}
+
+.menu-title:hover,
+.menu-title.active {
+  color: #212529;
+  /* siyaha yakın */
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.hero-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.5;
+  /* transparan video efekti */
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  background: rgba(0, 0, 0, 0.3);
+  /* transparan siyah overlay */
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  font-weight: 300;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex: 1;
+}
