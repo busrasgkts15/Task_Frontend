@@ -11,8 +11,10 @@
 -  `AdminPage : Yönetim Paneli`
 -  `ProductSetting / CategorySetting / UserSetting : CRUD işlemlerin gerçekleştirildiği sayfalar`
 -  `Contact : İletişim Formu`
+-  `endpoints : Url'lerin tanımlandığı yer`
+-  `Services : axios isteklerinin yapıldığı servislerin dosyası`
 
-## Kullanılan Teknoloji ve Kütüphaneler 
+## Kullanılan Teknoloji ve Kütüphaneler
 
 - `axios`
 - `react router`
@@ -21,3 +23,8 @@
 - `react icons`
 - `bootstrap`
 - `Ant desing charts`
+
+![Anasayfa](./src/assets/projeImg/Anasayfa.png)
+![Login](./src/assets/projeImg/login.png)
+![Admin](./src/assets/projeImg/chart.png)
+![Category Table](./src/assets/projeImg/category.png)
