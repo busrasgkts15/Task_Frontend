@@ -1,78 +1,96 @@
 import React, { useState, useEffect } from "react";
-
 import {
   Navbar,
-  Nav,
   NavbarBrand,
-  Dropdown,
+  Nav,
+  NavItem,
+  NavLink,
+  NavbarToggler,
+  Collapse,
+  UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavLink,
-  NavItem,
 } from "reactstrap";
-
 import { Link } from "react-router-dom";
-import { DownOutlined } from "@ant-design/icons";
 import { GetAllCategories } from "../../Services/CategoryService";
+import { DownOutlined } from "@ant-design/icons"; // ikon ekleniyor
 
 const Headers = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [Category, setCategory] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     GetAllCategories().then((res) => {
-      setCategory(res);
+      setCategories(res);
     });
   }, []);
 
-  return (
-    <Navbar color="white" light className="shadow-sm w-100 px-4">
-      <div className="container-fluid d-flex justify-content-between align-items-center sm-4 md-6">
-        <div className="d-flex align-items-center gap-2">
-          <NavbarBrand href="/">
-            <img src="/vite.svg" style={{ height: 30, width: 30 }} alt="logo" />
-          </NavbarBrand>
-          <NavbarBrand href="/" className="fw-bold fs-5 mb-0">
-            ZS
-          </NavbarBrand>
-        </div>
+  const toggle = () => setIsOpen(!isOpen);
 
-        <Nav className="d-flex gap-4 sm-4 md-6 xs-2">
-          <NavLink className="menu-title text-secondary" href="/">
-            Anasayfa
-          </NavLink>
-          <NavLink className="menu-title text-secondary" href="/about">
-            Hakkımızda
-          </NavLink>
-          <Dropdown
-            nav
-            inNavbar
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
-            isOpen={dropdownOpen}
-          >
-            <DropdownToggle
-              nav
-              className="menu-title text-secondary"
-              tag={Link}
-              to="/products"
-            >
-              Ürünler
-              <DownOutlined style={{ fontSize: "10px", marginLeft: "4px" }} />
-            </DropdownToggle>
-            <DropdownMenu className="shadow-sm mt-0 border-0 rounded-0">
-              {Category.map((item) => (
-                <DropdownItem key={item.categoryId}>
-                  <NavLink href="/products" style={{color:"gray"}}>{item.categoryName}</NavLink>
-                </DropdownItem>
-              ))}
-            </DropdownMenu>
-          </Dropdown>
-          <NavLink className="menu-title text-secondary" href="/contact">
-            İLETİŞİM
-          </NavLink>
-        </Nav>
+  return (
+    <Navbar color="light" light expand="md" className="shadow-sm px-3">
+      <div className="container d-flex justify-content-around">
+        
+        <NavbarBrand
+          tag={Link}
+          to="/"
+          className="d-flex align-items-center gap-2"
+        >
+          <img src="/vite.svg" alt="Logo" style={{ width: 30, height: 30 }} />
+          <span className="fw-bold fs-5 mb-0">ZS</span>
+        </NavbarBrand>
+
+        
+        <NavbarToggler onClick={toggle} />
+
+        
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="ms-auto d-flex align-items-center" navbar>
+            
+            <NavItem className="mx-2">
+              <NavLink tag={Link} to="/" className="text-secondary">
+                Anasayfa
+              </NavLink>
+            </NavItem>
+
+            
+            <NavItem className="mx-2">
+              <NavLink tag={Link} to="/about" className="text-secondary">
+                Hakkımızda
+              </NavLink>
+            </NavItem>
+
+            
+            <UncontrolledDropdown nav inNavbar className="mx-2">
+              <DropdownToggle
+                nav
+                className="text-secondary d-flex align-items-center"
+              >
+                Ürünler <DownOutlined style={{ fontSize: 10, marginLeft: 4 }} />
+              </DropdownToggle>
+              <DropdownMenu end className="shadow-sm">
+                {categories.map((item) => (
+                  <DropdownItem key={item.categoryId}>
+                    <Link
+                      to={`/products`}
+                      className="text-decoration-none text-dark"
+                    >
+                      {item.categoryName}
+                    </Link>
+                  </DropdownItem>
+                ))}
+              </DropdownMenu>
+            </UncontrolledDropdown>
+
+            
+            <NavItem className="mx-2">
+              <NavLink tag={Link} to="/contact" className="text-secondary">
+                İletişim
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
       </div>
     </Navbar>
   );

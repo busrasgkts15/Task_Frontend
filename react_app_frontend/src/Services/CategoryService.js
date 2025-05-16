@@ -1,5 +1,9 @@
 import axios from "axios";
 import { endpoints } from "../urlEndpoints/endpoints";
+import { getToken } from "./AuthService";
+import { Alert } from "antd";
+
+axios.defaults.headers.common["Authorization"] = `Bearer ${getToken()}`;
 
 export const GetAllCategories = () => {
   return axios.get(endpoints.getAllCategories).then((res) => {
