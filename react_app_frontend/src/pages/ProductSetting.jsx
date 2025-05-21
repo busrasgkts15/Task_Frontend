@@ -22,6 +22,11 @@ const ProductSetting = () => {
     });
   };
 
+  const DeleteData = (id) => {
+    DeleteProductById(id);
+    getData();
+  };
+
   useEffect(() => {
     getData();
   }, []);
@@ -57,15 +62,10 @@ const ProductSetting = () => {
           {/* Sil */}
           <Popconfirm
             title="Silmek istediğine emin misin?"
-            onConfirm={() => DeleteProductById(record.ProdId)}
+            onConfirm={() => DeleteData(record.prodId)}
           >
             <DeleteTwoTone twoToneColor="#ff4d4f" />
           </Popconfirm>
-
-          {/* Detay */}
-          {/* <Typography.Link onClick={() => handleDetail(record)}>
-          <span style={{ color: "#52c41a" }}>Detay</span>
-        </Typography.Link> */}
         </div>
       ),
     },

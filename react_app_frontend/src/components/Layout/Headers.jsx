@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { GetAllCategories } from "../../Services/CategoryService";
-import { DownOutlined } from "@ant-design/icons"; // ikon ekleniyor
+import { DownOutlined } from "@ant-design/icons";
 
 const Headers = () => {
   const [isOpen, setIsOpen] = useState(false);

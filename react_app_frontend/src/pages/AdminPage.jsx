@@ -4,9 +4,17 @@ import { GetAllProducts } from "../Services/ProductService";
 import { Col, Row } from "antd";
 import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
 import { Card, Statistic } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const AdminPage = () => {
   const [category, setCategory] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      return;
+    } else [navigate("/")];
+  }, []);
 
   useEffect(() => {
     GetAllProducts().then((res) => {
@@ -39,7 +47,7 @@ const AdminPage = () => {
       children: [
         {
           type: "interval",
-          data: category, // ← Güncel data burada!
+          data: category, //Güncel data burada!
           encode: { y: "percent", color: "item" },
           transform: [{ type: "stackY" }],
           legend: {

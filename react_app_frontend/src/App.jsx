@@ -13,12 +13,14 @@ import CategorySetting from "./pages/CategorySetting";
 import ProductSetting from "./pages/ProductSetting";
 import SupportSetting from "./pages/SupportSetting";
 
+
 function App() {
+
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<FullLayout />}>
+          <Route path="/" element={<FullLayout />}>  {/* url ile react bileşenlerinin eşlenmesi */}
             <Route index element={<Homepage />} />
             <Route path="/products" element={<Products />} />
             <Route path="/about" element={<About />} />

@@ -64,7 +64,7 @@ const UserModal = ({onUserAdded}) => {
         extra={
           <Space>
             <Button onClick={onClose}>Cancel</Button>
-            <Button onClick={() => form.submit()} type="primary">
+            <Button onClick={() => form.submit()} type="primary" htmlType="submit">
               Submit
             </Button>
           </Space>
@@ -77,7 +77,7 @@ const UserModal = ({onUserAdded}) => {
           hideRequiredMark
         >
           <Row gutter={16}>
-            <Col span={12}>
+            <Col span={24}>
               <Form.Item
                 name="name"
                 label="Name"
@@ -87,7 +87,7 @@ const UserModal = ({onUserAdded}) => {
                 <Input placeholder="Please enter user name" />
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col span={24}>
               <Form.Item
                 name="surname"
                 label="Surname"
@@ -102,7 +102,7 @@ const UserModal = ({onUserAdded}) => {
             </Col>
           </Row>
           <Row gutter={16}>
-            <Col span={12}>
+            <Col span={24}>
               <Form.Item
                 name="e_mail"
                 label="Email"
@@ -112,7 +112,7 @@ const UserModal = ({onUserAdded}) => {
                 <Input placeholder="Please enter e_mail" />
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col span={24}>
               <Form.Item
                 name="phone"
                 label="Phone"
@@ -124,7 +124,7 @@ const UserModal = ({onUserAdded}) => {
             </Col>
           </Row>
           <Row gutter={16}>
-            <Col span={12}>
+            <Col span={24}>
               <Form.Item
                 name="passwordHash"
                 label="Password"
@@ -133,7 +133,7 @@ const UserModal = ({onUserAdded}) => {
                 <Input placeholder="Please enter password"></Input>
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col span={24}>
               <Form.Item
                 name="role"
                 label="Role Id"
